@@ -1,0 +1,59 @@
+<!DOCTYPE HTML>
+{% load static %}
+
+{% include 'head.html' %}
+
+<html>
+	<body>
+		<!-- Wrapper -->
+			<div id="wrapper">
+				<!-- Main -->
+					<div id="main">
+						<div class="inner">
+							{% include 'header.html' %}
+							<!-- Banner -->
+								{% load static %}
+								<section id="banner">
+									<div class="content">
+										<h3 align="center">Employee Records</h3>
+										<table align="center">
+										
+											<tr>
+												<th>Image</th>
+												<th>Name</th>
+												<th>Employee ID</th>
+												<th>Age</th>
+												<th>Email</th>
+												<th>Phone Number</th>
+												<th>Action</th>
+											</tr>
+											{% for emp in data %}
+												<form action="/update_data/" method="POST" enctype="multipart/form-data">
+												{% csrf_token %}
+												<input type="hidden" value="{{emp.number}}" name="emp_id">
+												<tr>
+													{% static "" as baseUrl %}
+													<td>
+														<img src="{{baseUrl}}images/{{emp.photo}}" height="40" width="50">
+													</td>
+													<td><input type="text" name="name" value="{{emp.name}}"></td>
+													<td><input type="text" name="number" value="{{emp.number}}"></td>
+													<td><input type="text" name="age" value="{{emp.age}}"></td>
+													<td><input type="text" name="email" value="{{emp.email}}"></td>
+													<td><input type="text" name="phone" value="{{emp.phone}}"></td>
+													<td><input type="submit" value="Update"></td>
+												</tr>
+												</form>
+											{% endfor %}
+										</table>
+										
+								</section>
+						</div>
+					</div>
+				<!-- Sidebar -->
+					{% include 'sidebar.html' %}
+			</div>
+		<!-- Scripts -->
+			{% include 'js_scripts.html' %}
+	</body>
+</html>

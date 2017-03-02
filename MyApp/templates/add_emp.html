@@ -1,0 +1,34 @@
+<!DOCTYPE HTML>
+{% load static %}
+
+{% include 'head.html' %}
+
+<html>
+	<body>
+		<!-- Wrapper -->
+			<div id="wrapper">
+				<!-- Main -->
+					<div id="main">
+						<div class="inner">
+							{% include 'header.html' %}
+							<!-- Banner -->
+								{% load static %}
+								<section id="banner">
+									<div class="content">
+										<h3 align="center">Employee Records</h3>
+										<form action="/add_emp_data/" method="POST" enctype="multipart/form-data">
+										{% csrf_token %}
+										{{ form.as_p }}
+										<button type="submit">Upload</button>
+
+										
+								</section>
+						</div>
+					</div>
+				<!-- Sidebar -->
+					{% include 'sidebar.html' %}
+			</div>
+		<!-- Scripts -->
+			{% include 'js_scripts.html' %}
+	</body>
+</html>
