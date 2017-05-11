@@ -12,5 +12,8 @@ class Employee(models.Model):
     phone_number = models.CharField(max_length=10, unique=True)
     photo =  models.ImageField(upload_to='{0}\MyApp\static\images'.format(BASE_DIR), max_length=100)
 
+
+
+
     def __unicode__(self):
     	return self.name
